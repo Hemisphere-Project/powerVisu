@@ -1,10 +1,10 @@
 
 void showValueStrip3(String type, int val){
 
-  int valPX = (val-data3Min)*NUMPIXELS/(data3Max-data3Min);
+  int valPX = (val-data3Min)*NUMPIXELS_STRIP3/(data3Max-data3Min);
 
   //ALL OFF
-  for(int i=0;i<NUMPIXELS;i++){
+  for(int i=0;i<NUMPIXELS_STRIP3;i++){
     strip3.setPixelColor(i, strip3.Color(0,0,0));
   }
   // VU TYPES:
@@ -17,7 +17,7 @@ void showValueStrip3(String type, int val){
   //ALL GREEN TO RED
   if (type=="allG2R"){
     for(int i=0;i<valPX;i++){
-      strip3.setPixelColor(i, strip3.Color(i*lightMax/NUMPIXELS,lightMax-i*lightMax/NUMPIXELS,0));
+      strip3.setPixelColor(i, strip3.Color(i*lightMax/NUMPIXELS_STRIP3,lightMax-i*lightMax/NUMPIXELS_STRIP3,0));
     }
   }
   //ONE GREEN
@@ -26,7 +26,7 @@ void showValueStrip3(String type, int val){
   }
   //ONE GREEN TO RED
   if (type=="oneG2R"){
-    strip3.setPixelColor(valPX, strip3.Color(valPX*lightMax/NUMPIXELS,lightMax-valPX*lightMax/NUMPIXELS,0));
+    strip3.setPixelColor(valPX, strip3.Color(valPX*lightMax/NUMPIXELS_STRIP3,lightMax-valPX*lightMax/NUMPIXELS_STRIP3,0));
   }
 
 }

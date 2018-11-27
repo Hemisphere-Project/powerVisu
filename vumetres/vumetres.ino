@@ -4,29 +4,41 @@
 // https://forum.arduino.cc/index.php?topic=428325.0
 // https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver
 
-
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
   #include <avr/power.h>
 #endif
 
-#define PIN1            5
-#define PIN2            6
-#define PIN3            7
-#define NUMPIXELS      30
-Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(NUMPIXELS, PIN1, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(NUMPIXELS, PIN2, NEO_GRB + NEO_KHZ800);
-Adafruit_NeoPixel strip3 = Adafruit_NeoPixel(NUMPIXELS, PIN3, NEO_GRB + NEO_KHZ800);
+///////////////////////// OUTPUTS /////////////////////////
+// STRIP 1
+#define OUTPIN1            5
+#define NUMPIXELS_STRIP1   30
+Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(NUMPIXELS, OUTPIN1, NEO_GRB + NEO_KHZ800);
+// STRIP 2
+#define OUTPIN2            6
+#define NUMPIXELS_STRIP2   30
+Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(NUMPIXELS, OUTPIN2, NEO_GRB + NEO_KHZ800);
+// STRIP 3
+#define OUTPIN3            7
+#define NUMPIXELS_STRIP3   30
+Adafruit_NeoPixel strip3 = Adafruit_NeoPixel(NUMPIXELS, OUTPIN3, NEO_GRB + NEO_KHZ800);
+
+///////////////////////// INPUTS /////////////////////////
+// INPUT 1
+#define INPIN1            A0
+int data1Min = 10;
+int data1Max = 600;
+// INPUT 2
+#define INPIN2            A1
+int data2Min = 10;
+int data2Max = 50;
+// INPUT 3
+#define INPIN3            A2
+int data3Min = 10;
+int data3Max = 50;
 
 // BRIGHTNESS
 int lightMax = 40;
-// DATA ZONES
-int data1Min = 10;
-int data1Max = 50;
-int data2Min = 10;
-int data2Max = 50;
-int data3Min = 10;
-int data3Max = 50;
 
 // DIVERS
 int randomValue = 0;
@@ -34,7 +46,8 @@ int sens = 1;
 
 
 void setup() {
-  // Serial.begin(9600);
+  Serial.begin(9600);
+
   strip1.begin();
   strip2.begin();
   strip3.begin();
@@ -42,16 +55,25 @@ void setup() {
 
 
 void loop() {
-  randomValue=randomValue+sens;
-  if ((randomValue>100)||(randomValue<0)){ sens = -1*sens; }
+  // randomValue=randomValue+sens;
+  // if ((randomValue>100)||(randomValue<0)){ sens = -1*sens; }
 
-  showValueStrip1("allG2R", randomValue);
-  showValueStrip2("oneG2R", randomValue);
-  showValueStrip3("allG", randomValue);
 
+  int in1 = analogRead(INPIN1);
+  int in2 = analogRead(INPIN2);
+  int in3 = analogRead(INPIN3);
+
+  // Serial.println(in1);
+
+  showValueStrip1("allG2R", in1);
+  showValueStrip2("allG2R", in2);
+  showValueStrip3("allG2R", in3);
+
+  // Update
   strip1.show();
   strip2.show();
   strip3.show();
 
   delay(5);
+
 }
