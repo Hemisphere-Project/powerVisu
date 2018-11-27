@@ -1,4 +1,18 @@
 
+// SMOOTHING
+int in1Smoothing(int input){
+
+  in1Total = in1Total - in1Raw[in1Index];
+  in1Raw[in1Index] = analogRead(INPIN1);
+  in1Total = in1Total + in1Raw[in1Index];
+  in1Index = in1Index + 1;
+  if (in1Index >= numAvg1) { in1Index = 0; }
+  int in1Smooth = in1Total / numAvg1;
+  return in1Smooth;
+}
+
+
+// SHOWING
 void showValueStrip1(String type, int val){
 
   int valPX = (val-data1Min)*NUMPIXELS_STRIP1/(data1Max-data1Min);
