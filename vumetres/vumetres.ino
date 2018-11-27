@@ -40,7 +40,7 @@ int data2Max = 50;
 int data3Min = 10;
 int data3Max = 50;
 
-///////////////////////// SMOOTH /////////////////////////
+/////////////////////// SMOOTHING ///////////////////////
 // 1
 const int numAvg1 = 20;
 int in1Raw[numAvg1];
@@ -74,7 +74,7 @@ void setup() {
   strip2.begin();
   strip3.begin();
 
-  // init all the in Raw to 0
+  // init all Smoothing arrays
   for (int i = 0; i < numAvg1; i++) { in1Raw[i] = 0; }
   for (int i = 0; i < numAvg2; i++) { in2Raw[i] = 0; }
   for (int i = 0; i < numAvg3; i++) { in3Raw[i] = 0; }
