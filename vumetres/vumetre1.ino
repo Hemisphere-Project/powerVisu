@@ -15,7 +15,7 @@ int in1Smoothing(int input){
 // SHOWING
 void showValueStrip1(String type, int val){
 
-  int valPX = (val-data1Min)*NUMPIXELS_STRIP1/(data1Max-data1Min);
+  long valPX = (val-data1Min)*NUMPIXELS_STRIP1/(data1Max-data1Min);
 
   //ALL OFF
   for(int i=0;i<NUMPIXELS_STRIP1;i++){

@@ -10,6 +10,10 @@
 #endif
 
 ///////////////////////// OUTPUTS /////////////////////////
+
+// !! STRIP COURTE NUMPIXELS 30
+// !! STRIP LONGUE NUMPIXELS 87
+
 // STRIP 1
 #define OUTPIN1            5
 #define NUMPIXELS_STRIP1   30
@@ -23,22 +27,23 @@ Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(NUMPIXELS_STRIP2, OUTPIN2, NEO_GRB 
 #define NUMPIXELS_STRIP3   30
 Adafruit_NeoPixel strip3 = Adafruit_NeoPixel(NUMPIXELS_STRIP3, OUTPIN3, NEO_GRB + NEO_KHZ800);
 
+
 // BRIGHTNESS
-int lightMax = 20;
+int lightMax = 150;
 
 ///////////////////////// INPUTS /////////////////////////
 // INPUT 1
 #define INPIN1 A0 // 0-0,2V --
-int data1Min = 0;
-int data1Max = 5;
+long data1Min = 0;
+long data1Max = 614;//5
 // INPUT 2
 #define INPIN2 A1 //
-int data2Min = 10;
-int data2Max = 614;
+long data2Min = 10;
+long data2Max = 614;
 // INPUT 3
 #define INPIN3 A2 // PONT DIVISEUR 0-3V
-int data3Min = 10;
-int data3Max = 614;
+long data3Min = 10;
+long data3Max = 614;
 
 /////////////////////// SMOOTHING ///////////////////////
 // 1
@@ -61,7 +66,7 @@ int in3Total = 0;
 
 
 // DIVERS
-int randomValue = 0;
+long randomValue = 0;
 int sens = 1;
 
 
@@ -86,7 +91,7 @@ void setup() {
 
 void loop() {
 
-  // randomValue=randomValue+sens*2;
+  // randomValue=randomValue+sens*6;
   // if ((randomValue>600)||(randomValue<0)){ sens = -1*sens; }
 
   // int in1 = analogRead(INPIN1);
