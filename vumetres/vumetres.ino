@@ -16,7 +16,7 @@
 
 // STRIP 1
 #define OUTPIN1            5
-#define NUMPIXELS_STRIP1   30
+#define NUMPIXELS_STRIP1   87
 Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(NUMPIXELS_STRIP1, OUTPIN1, NEO_GRB + NEO_KHZ800);
 // STRIP 2
 #define OUTPIN2            6
@@ -24,7 +24,7 @@ Adafruit_NeoPixel strip1 = Adafruit_NeoPixel(NUMPIXELS_STRIP1, OUTPIN1, NEO_GRB 
 Adafruit_NeoPixel strip2 = Adafruit_NeoPixel(NUMPIXELS_STRIP2, OUTPIN2, NEO_GRB + NEO_KHZ800);
 // STRIP 3
 #define OUTPIN3            7
-#define NUMPIXELS_STRIP3   87
+#define NUMPIXELS_STRIP3   30
 Adafruit_NeoPixel strip3 = Adafruit_NeoPixel(NUMPIXELS_STRIP3, OUTPIN3, NEO_GRB + NEO_KHZ800);
 
 
@@ -35,18 +35,18 @@ int lightMax = 150;
 // INPUT 1
 // Courant produit par la génératrice
 #define INPIN1 A0 // 0-0,2V --
-long data1Min = 510;
-long data1Max = 540;
+long data1Min = 512;
+long data1Max = 570;
 // INPUT 2
 // Courant consommé
 #define INPIN2 A1 //
-long data2Min = 500;
-long data2Max = 530;
+long data2Min = 512;
+long data2Max = 650;
 // INPUT 3
 // V Batterie
 #define INPIN3 A2 // PONT DIVISEUR 0-3V
-long data3Min = 0;
-long data3Max = 614;
+long data3Min = 420;
+long data3Max = 550;
 
 /////////////////////// SMOOTHING ///////////////////////
 // 1
